@@ -1,49 +1,40 @@
-﻿/// find the largest integer in an array
-/// find the frequency of a typed (user-inputted) number in an array
+﻿/*
+char[] DuplicateCharacters( string testString ) returns an array of all characters that appear more than once in a string. 
 
-int[] integerArray = new int[] { 6, 29, 3, 207, 1, 1, 0, 29, 3, 17, 21893 };
-int maxNumber = GetLargestInteger(integerArray);
-Console.WriteLine(maxNumber);
+For example, the argument “Programmatic Python” would return “[p,r,o,a,m,t]”. */
 
-maxNumber = GetLargestInteger(new int[] { 5, 6, 7, 8 });
-Console.WriteLine(maxNumber);
+DuplicateCharacters("aabbbbcdd");
 
-//int input = Int32.Parse(Console.ReadLine());
-
-Console.WriteLine(GetIntegerFrequency(new int[] {1, 2, 3, 3}, 3));
-
-
-int GetLargestInteger(int[] myArray)
+char[] DuplicateCharacters(string testString)
 {
-    int maxNumber = Int32.MinValue;
+    char[] testChars = testString.ToLower().ToCharArray();
+    Dictionary<char, int> charCount = new Dictionary<char, int>();
 
-    for (int index = 0; index < myArray.Length; index++)
+    foreach(char character in testChars)
     {
-        // is the current number greater than the greatest number that we've found so far?
-        if (integerArray[index] > maxNumber)
+        if (charCount.ContainsKey(character))
         {
-            maxNumber = myArray[index];
+            charCount[character] = charCount[character] + 1;
+        } else
+        {
+            charCount.Add(character, 1);
         }
     }
 
-    return maxNumber;
-}
+    char[] duplicateChars = new char[charCount.Count];
+    int dupeCount = 0;
 
-int GetIntegerFrequency(int[] intArray, int searchValue)
-{
-    int counter = 0;
-
-    for (int i = 0; i < intArray.Length; i++)
+    foreach(KeyValuePair<char, int> pair in charCount)
     {
-        if (intArray[i] == searchValue)
+        if(pair.Value > 1)
         {
-            counter++;
+            duplicateChars[dupeCount] = pair.Key;
+            dupeCount++;
+        } else
+        {
+            Array.Resize(ref duplicateChars, duplicateChars.Length - 1);
         }
     }
 
-    return counter;
+    return duplicateChars;
 }
-
-
-
-
