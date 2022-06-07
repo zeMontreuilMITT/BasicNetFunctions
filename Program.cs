@@ -29,6 +29,7 @@ int GetLargestInteger(int[] myArray)
     return maxNumber;
 }
 
+
 int GetIntegerFrequency(int[] intArray, int searchValue)
 {
     int counter = 0;
@@ -43,6 +44,9 @@ int GetIntegerFrequency(int[] intArray, int searchValue)
 
     return counter;
 }
+
+
+
 
 
 
