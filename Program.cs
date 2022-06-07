@@ -30,18 +30,22 @@ int GetLargestInteger(int[] myArray)
 }
 
 
-int[] intArray = new int[3];
-int searchValue = 3;
-
-int counter = 0;
-
-for (int i = 0; i < intArray.Length; i++)
+int GetIntegerFrequency(int[] intArray, int searchValue)
 {
-    if (intArray[i] == searchValue)
+    int counter = 0;
+
+    for (int i = 0; i < intArray.Length; i++)
     {
-        counter++;
+        if (intArray[i] == searchValue)
+        {
+            counter++;
+        }
     }
+
+    return counter;
 }
+
+
 
 
 
